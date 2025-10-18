@@ -1,6 +1,12 @@
+import {CustomJumbotron} from "@/components/custom/CustomJumbotron.tsx";
+
 export const SearchPage = () => {
     return (
-        <>Search Page</>
+        <>
+            <CustomJumbotron title="Superhero Search"
+                             description="Discover, explore, and manage your favorite superheroes and villains!!"/>
+        </>
+
     );
 };
 
