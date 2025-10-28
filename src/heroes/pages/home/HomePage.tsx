@@ -1,17 +1,17 @@
 import {
     Filter,
 } from "lucide-react"
+import {useState} from "react";
+import {useQuery} from "@tanstack/react-query";
 import {Badge} from "@/components/ui/badge"
 import {Tabs, TabsContent, TabsList, TabsTrigger} from "@/components/ui/tabs"
 import {CustomJumbotron} from "@/components/custom/CustomJumbotron.tsx";
 import {HeroStats} from "@/heroes/components/HeroStats.tsx";
 import {SearchControls} from "@/heroes/pages/search/ui/SearchControls.tsx";
 import {HeroGrid} from "@/heroes/components/HeroGrid.tsx";
-import {useState} from "react";
 import {CustomPagination} from "@/components/custom/CustomPagination.tsx";
 import {CustomBreadcrumbs} from "@/components/custom/CustomBreadcrumbs.tsx";
 import {getHeroesByPageAction} from "@/heroes/actions/get-heroes-by-page.action.ts";
-import {useQuery} from "@tanstack/react-query";
 
 export const HomePage = () => {
     const [activeTab, setActiveTab] = useState<'all' |
@@ -25,11 +25,13 @@ export const HomePage = () => {
     //     });
     // }, []);
 
-    const {} = useQuery({
+    const {data: heroesResponse} = useQuery({
         queryKey: ['heroes'],
         queryFn: () => getHeroesByPageAction(),
         staleTime: 1000 * 60 * 5
-    })
+    });
+
+    console.log({heroesResponse});
     
     return (
         <>
@@ -55,16 +57,16 @@ export const HomePage = () => {
                     </TabsList>
                     {/* Tabs Content */}
                     <TabsContent value="all" >
-                        <h1>All Heroes</h1>
+                        { heroesResponse != null && <HeroGrid heroes={heroesResponse?.heroes} /> }
                     </TabsContent>
                     <TabsContent value="favorites" >
-                        <h1>Favorites</h1>
+                        { heroesResponse != null && <HeroGrid heroes={heroesResponse?.heroes} /> }
                     </TabsContent>
                     <TabsContent value="heroes" >
-                        <h1>Heroes</h1>
+                        { heroesResponse != null && <HeroGrid heroes={heroesResponse?.heroes} /> }
                     </TabsContent>
                     <TabsContent value="villains" >
-                        <h1>Villains</h1>
+                        { heroesResponse != null && <HeroGrid heroes={heroesResponse?.heroes} /> }
                     </TabsContent>
                 </Tabs>
 
@@ -79,8 +81,7 @@ export const HomePage = () => {
                     </div>
                 </div>
 
-                {/* Character Grid */}
-                <HeroGrid />
+
 
                 {/* Pagination */}
                 <CustomPagination totalPages={10} />
