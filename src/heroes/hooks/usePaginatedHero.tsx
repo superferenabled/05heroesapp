@@ -6,5 +6,5 @@ export const usePaginatedHero = (page: number, limit: number) => {
         queryKey: ['heroes', {page, limit}],
         queryFn: () => getHeroesByPageAction(page, limit),
         staleTime: 1000 * 60 * 5
-    });;
+    });
 };
