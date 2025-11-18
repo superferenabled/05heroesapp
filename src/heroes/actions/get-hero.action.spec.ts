@@ -7,6 +7,7 @@ describe('getHeroes action', async () => {
     test('should fetch hero data with the full image url', async () => {
         const heroData = await getHeroAction('clark-kent');
         expect(heroData.image).toContain('http');
+        console.log(heroData)
         expect(heroData).toStrictEqual({
                 id: '1',
                 name: 'Clark Kent',
