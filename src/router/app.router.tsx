@@ -1,10 +1,10 @@
 import {createBrowserRouter, Navigate} from 'react-router';
-import {HomePage} from "@/heroes/pages/home/HomePage.tsx";
-import {HeroPage} from "@/heroes/pages/hero/HeroPage.tsx";
-// import {SearchPage} from "@/heroes/pages/search/SearchPage.tsx";
-import {AdminPage} from "@/admin/pages/AdminPage.tsx";
-import {HeroesLayout} from "@/heroes/layouts/HeroesLayout.tsx";
-import {AdminLayout} from "@/heroes/layouts/AdminLayout.tsx";
+import {HomePage} from "@/heroes/pages/home/HomePage";
+import {HeroPage} from "@/heroes/pages/hero/HeroPage";
+// import {SearchPage} from "@/heroes/pages/search/SearchPage";
+import {AdminPage} from "@/admin/pages/AdminPage";
+import {HeroesLayout} from "@/heroes/layouts/HeroesLayout";
+import {AdminLayout} from "@/heroes/layouts/AdminLayout";
 import {lazy} from "react";
 
 const SearchPage = lazy(() => import("@/heroes/pages/search/SearchPage"));
