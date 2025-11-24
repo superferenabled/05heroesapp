@@ -5,15 +5,15 @@ import {useSearchParams} from "react-router";
 import {use, useMemo} from "react";
 import {Badge} from "@/components/ui/badge"
 import {Tabs, TabsContent, TabsList, TabsTrigger} from "@/components/ui/tabs"
-import {CustomJumbotron} from "@/components/custom/CustomJumbotron.tsx";
-import {HeroStats} from "@/heroes/components/HeroStats.tsx";
-import {SearchControls} from "@/heroes/pages/search/ui/SearchControls.tsx";
-import {HeroGrid} from "@/heroes/components/HeroGrid.tsx";
-import {CustomPagination} from "@/components/custom/CustomPagination.tsx";
-import {CustomBreadcrumbs} from "@/components/custom/CustomBreadcrumbs.tsx";
-import {useHeroSummary} from "@/heroes/hooks/useHeroSummary.tsx";
-import {usePaginatedHero} from "@/heroes/hooks/usePaginatedHero.tsx";
-import {FavoritesHeroContext} from "@/heroes/context/FavoritesHeroContext.tsx";
+import {CustomJumbotron} from "@/components/custom/CustomJumbotron";
+import {HeroStats} from "@/heroes/components/HeroStats";
+import {SearchControls} from "@/heroes/pages/search/ui/SearchControls";
+import {HeroGrid} from "@/heroes/components/HeroGrid";
+import {CustomPagination} from "@/components/custom/CustomPagination";
+import {CustomBreadcrumbs} from "@/components/custom/CustomBreadcrumbs";
+import {useHeroSummary} from "@/heroes/hooks/useHeroSummary";
+import {usePaginatedHero} from "@/heroes/hooks/usePaginatedHero";
+import {FavoritesHeroContext} from "@/heroes/context/FavoritesHeroContext";
 
 type Tabs = 'all' | 'favorites' | 'heroes' | 'villains';
 const TabsMapping = {
@@ -50,8 +50,6 @@ export const HomePage = () => {
 
     const { data: heroesResponse } = usePaginatedHero(+page, +limit, category);
     const { data: summary } = useHeroSummary();
-
-    // console.log({heroesResponse});
     
     return (
         <>
@@ -77,16 +75,16 @@ export const HomePage = () => {
                     </TabsList>
                     {/* Tabs Content */}
                     <TabsContent value="all" >
-                        { heroesResponse != null && <HeroGrid heroes={heroesResponse?.heroes} /> }
+                        { <HeroGrid heroes={heroesResponse?.heroes ?? [] } /> }
                     </TabsContent>
                     <TabsContent value="favorites" >
-                        { <HeroGrid heroes={favorites} /> }
+                        { <HeroGrid heroes={favorites ?? [] } /> }
                     </TabsContent>
                     <TabsContent value="heroes" >
-                        { heroesResponse != null && <HeroGrid heroes={heroesResponse?.heroes} /> }
+                        { <HeroGrid heroes={heroesResponse?.heroes ?? [] } /> }
                     </TabsContent>
                     <TabsContent value="villains" >
-                        { heroesResponse != null && <HeroGrid heroes={heroesResponse?.heroes} /> }
+                        { <HeroGrid heroes={heroesResponse?.heroes ?? [] } /> }
                     </TabsContent>
                 </Tabs>
 
