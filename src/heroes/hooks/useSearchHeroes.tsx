@@ -1,5 +1,5 @@
 import {useQuery} from "@tanstack/react-query";
-import {type HeroOptions, searchHeroesAction} from "@/heroes/actions/search-heroes.action.ts";
+import {type HeroOptions, searchHeroesAction} from "@/heroes/actions/search-heroes.action";
 
 export const useSearchHeroes = ({name, strength}: HeroOptions) => {
     return useQuery({

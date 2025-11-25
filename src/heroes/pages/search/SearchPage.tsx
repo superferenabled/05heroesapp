@@ -1,10 +1,10 @@
-import {CustomJumbotron} from "@/components/custom/CustomJumbotron.tsx";
-import {CustomBreadcrumbs} from "@/components/custom/CustomBreadcrumbs.tsx";
-import {HeroStats} from "@/heroes/components/HeroStats.tsx";
-import {SearchControls} from "@/heroes/pages/search/ui/SearchControls.tsx";
-import {HeroGrid} from "@/heroes/components/HeroGrid.tsx";
+import {CustomJumbotron} from "@/components/custom/CustomJumbotron";
+import {CustomBreadcrumbs} from "@/components/custom/CustomBreadcrumbs";
+import {HeroStats} from "@/heroes/components/HeroStats";
+import {SearchControls} from "@/heroes/pages/search/ui/SearchControls";
+import {HeroGrid} from "@/heroes/components/HeroGrid";
 import {useSearchParams} from "react-router";
-import {useSearchHeroes} from "@/heroes/hooks/useSearchHeroes.tsx";
+import {useSearchHeroes} from "@/heroes/hooks/useSearchHeroes";
 
 export const SearchPage = () => {
 
@@ -24,15 +24,7 @@ export const SearchPage = () => {
             <CustomJumbotron title="Superhero Search"
                              description="Discover, explore, and manage your favorite superheroes and villains!!"/>
 
-            <CustomBreadcrumbs currentPage="Search Heroes"
-                breadcrumbs={
-                    [
-                        {label: 'Home 1', to: '/'},
-                        {label: 'Home 2', to: '/'},
-                        {label: 'Home 3', to: '/'},
-                    ]
-                }
-            />
+            <CustomBreadcrumbs currentPage="Search Heroes" />
 
             <HeroStats />
 
